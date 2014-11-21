@@ -56,6 +56,9 @@
           obj[name].andReturn stubbing
       obj
 
+
+
+
   whatToDoWhenTheSpyGetsCalled = (spy) ->
     matchesStub = (stubbing,args,context) ->
       switch stubbing.type
@@ -76,18 +79,26 @@
         i++
       priorPlan.apply(spy, arguments)
 
-  jasmine.Spy::whenContext = (context) ->
-    spy = this
-    spy._stealth_stubbings ||= []
-    whatToDoWhenTheSpyGetsCalled(spy)
-    stubChainer(spy, "context", context)
+  root.stealthy = (spy) ->
+    spy.whenContext = (context) ->
+      spy._stealth_stubbings ||= []
+      whatToDoWhenTheSpyGetsCalled(spy)
+      stubChainer(spy, "context", context)
 
-  jasmine.Spy::when = ->
-    spy = this
-    ifThis = jasmine.util.argsToArray(arguments)
-    spy._stealth_stubbings ||= []
-    whatToDoWhenTheSpyGetsCalled(spy)
-    stubChainer(spy, "args", ifThis)
+    spy.when = ->
+      ifThis = jasmine.util.argsToArray(arguments)
+      spy._stealth_stubbings ||= []
+      whatToDoWhenTheSpyGetsCalled(spy)
+      stubChainer(spy, "args", ifThis)
+
+    spy.mostRecentCallThat = (callThat, context) ->
+      i = @calls.length - 1
+
+      while i >= 0
+        return @calls[i]  if callThat.call(context or this, @calls[i]) is true
+        i--
+
+    spy
 
   stubChainer = (spy, type, ifThis) ->
     addStubbing = (satisfaction) ->
@@ -98,12 +109,7 @@
     thenReturn: addStubbing("return")
     thenCallFake: addStubbing("callFake")
 
-  jasmine.Spy::mostRecentCallThat = (callThat, context) ->
-    i = @calls.length - 1
 
-    while i >= 0
-      return @calls[i]  if callThat.call(context or this, @calls[i]) is true
-      i--
 
   ## Matchers
 

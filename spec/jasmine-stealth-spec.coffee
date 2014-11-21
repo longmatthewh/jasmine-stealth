@@ -20,11 +20,12 @@
           Then -> @obj.woot() == "troll"
 
     describe "#when", ->
-      Given -> @spy = jasmine.createSpy("my spy")
+      Given -> @spy = stealthy(jasmine.createSpy("my spy"))
 
       context "a spy is returned by then*()", ->
         Then -> expect(@spy.when("a").thenReturn("")).toBe(@spy)
         Then -> expect(@spy.when("a").thenCallFake((->))).toBe(@spy)
+
 
       describe "#thenReturn", ->
         context "the stubbing is unmet", ->
@@ -74,7 +75,7 @@
 
       describe "#thenCallFake", ->
         context "stubbing a conditional call fake", ->
-          Given -> @fake = jasmine.createSpy("fake")
+          Given -> @fake = stealthy(jasmine.createSpy("fake"))
           Given -> @spy.when("panda", "baby").thenCallFake(@fake)
           When -> @spy("panda", "baby")
           Then -> expect(@fake).toHaveBeenCalledWith("panda", "baby")
@@ -119,7 +120,7 @@
 
     describe "#whenContext", ->
       Given -> @ctx = "A"
-      Given -> @spy = jasmine.createSpy().whenContext(@ctx).thenReturn("foo")
+      Given -> @spy = stealthy(jasmine.createSpy()).whenContext(@ctx).thenReturn("foo")
 
       context "when satisfied", ->
         When -> @result = @spy.call(@ctx)
@@ -130,7 +131,7 @@
         Then -> @result == undefined
 
     describe "#mostRecentCallThat", ->
-      Given -> @spy = jasmine.createSpy()
+      Given -> @spy = stealthy(jasmine.createSpy())
       Given -> @spy("foo")
       Given -> @spy("bar")
       Given -> @spy("baz")
@@ -164,7 +165,7 @@
 
     describe "jasmine.argThat (jasmine.Matchers.ArgThat)", ->
       context "with when()", ->
-        Given -> @spy = jasmine.createSpy()
+        Given -> @spy = stealthy(jasmine.createSpy())
         Given -> @spy.when(jasmine.argThat (arg) -> arg > 5).thenReturn("YAY")
         Given -> @spy.when(jasmine.argThat (arg) -> arg < 3).thenReturn("BOO")
 
@@ -174,7 +175,7 @@
 
 
       context "with a spy arg, using toHaveBeenCalledWith", ->
-        Given -> @spy = jasmine.createSpy()
+        Given -> @spy = stealthy(jasmine.createSpy())
         When -> @spy(5)
         Then -> expect(@spy).toHaveBeenCalledWith(jasmine.argThat (arg) -> arg < 6)
         Then -> expect(@spy).not.toHaveBeenCalledWith(jasmine.argThat (arg) -> arg > 5)
@@ -186,14 +187,14 @@
 
     describe "jasmine.captor, #capture() & .value", ->
       Given -> @captor = jasmine.captor()
-      Given -> @spy = jasmine.createSpy()
+      Given -> @spy = stealthy(jasmine.createSpy())
       When -> @spy("foo!")
       Then -> expect(@spy).toHaveBeenCalledWith(@captor.capture())
       And -> @captor.value == "foo!"
 
       it "readme example", ->
         captor = jasmine.captor()
-        save = jasmine.createSpy()
+        save = stealthy(jasmine.createSpy())
 
         save({ name: "foo", phone: "123"});
 
