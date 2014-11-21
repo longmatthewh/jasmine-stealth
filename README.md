@@ -11,7 +11,7 @@ jasmine-stealth is a [Jasmine](https://github.com/pivotal/jasmine) helper that a
 
 ## stealthy
 
-One of the biggest changes is to prepare for Jasmine 2.x suport, which exposes "Spy" differently. We can no longer add new functions directly to the protoype. So, the functions we used to add to the prototype are now simply being added to the spy instance by using the new `stealthy` method.
+One of the biggest changes is to prepare for Jasmine 2.x suport, which exposes "Spy" differently. We can no longer add new functions directly to the protoype. So, the functions we used to add to the prototype are now simply being added to the spy instance by using the new `stealthy` method. `someSpy = jasmine.createSpy()` becomes `someSpy = stealthy(jasmine.createSpy())`
 
 ## "when" + "thenReturn"
 
