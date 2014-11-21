@@ -9,6 +9,10 @@ jasmine-stealth is a [Jasmine](https://github.com/pivotal/jasmine) helper that a
 
 # Conditional Stubbing
 
+## stealthy
+
+One of the biggest changes is to prepare for Jasmine 2.x suport, which exposes "Spy" differently. We can no longer add new functions directly to the protoype. So, the functions we used to add to the prototype are now simply being added to the spy instance by using the new `stealthy` method.
+
 ## "when" + "thenReturn"
 
 One annoyance with Jasmine spies is the default semantics of `Spy#andReturn` limits you to a single return value, regardless of which arguments a spy is invoked with. However, the arguments a spy is called with *usually matter* to the spec. None of your out-of-the-box options are great:
@@ -25,7 +29,7 @@ Enter jasmine-stealth, which adds a `#when` method to Jasmine's spies. It lets y
 describe("multiple stubbings", function() {
   var someSpy;
   beforeEach(function() {
-    someSpy = jasmine.createSpy();
+    someSpy = stealthy(jasmine.createSpy());
     someSpy.when("pirate", { booty: ["jewels",jasmine.any(String)]}).thenReturn("argh!");
     someSpy.when("panda",1).thenReturn("sad");
   });
@@ -190,7 +194,7 @@ See this example:
 
 ``` javascript
 
-spy = jasmine.createSpy();
+spy = stealthy(jasmine.createSpy());
 spy('foo',function(){});
 spy('bar',function(){});
 spy('baz',function(){});
