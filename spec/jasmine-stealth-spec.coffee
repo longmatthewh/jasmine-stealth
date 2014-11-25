@@ -3,6 +3,7 @@
 
   root.context = root.describe
   root.xcontext = root.xdescribe
+  root.xcontext = root.xdescribe
 
   describe "jasmine-stealth", ->
     describe "aliases", ->
@@ -11,16 +12,16 @@
       describe ".stubFor", ->
         context "existing method", ->
           Given -> root.lolol = -> "roflcopter"
-          When -> stubFor(root, "lolol").andReturn("lol")
+          When -> stubFor(root, "lolol").and.return("lol")
           Then -> root.lolol() == "lol"
 
         context "non-existing method", ->
           Given -> @obj = { woot: null }
-          When -> spyOn(@obj, "woot").andReturn("troll")
+          When -> spyOn(@obj, "woot").and.return("troll")
           Then -> @obj.woot() == "troll"
 
     describe "#when", ->
-      Given -> @spy = stealthy(jasmine.createSpy("my spy"))
+      Given -> @spy = jasmine.createSpy("my spy")
 
       context "a spy is returned by then*()", ->
         Then -> expect(@spy.when("a").thenReturn("")).toBe(@spy)
@@ -75,13 +76,13 @@
 
       describe "#thenCallFake", ->
         context "stubbing a conditional call fake", ->
-          Given -> @fake = stealthy(jasmine.createSpy("fake"))
+          Given -> @fake = jasmine.createSpy("fake")
           Given -> @spy.when("panda", "baby").thenCallFake(@fake)
           When -> @spy("panda", "baby")
           Then -> expect(@fake).toHaveBeenCalledWith("panda", "baby")
 
-      context "default andReturn plus some conditional stubbing", ->
-        Given -> @spy.andReturn "football"
+      context "default and.return plus some conditional stubbing", ->
+        Given -> @spy.and.return "football"
         Given -> @spy.when("bored").thenReturn "baseball"
 
         describe "it doesn't appear to invoke the spy", ->
@@ -120,7 +121,7 @@
 
     describe "#whenContext", ->
       Given -> @ctx = "A"
-      Given -> @spy = stealthy(jasmine.createSpy()).whenContext(@ctx).thenReturn("foo")
+      Given -> @spy = jasmine.createSpy().whenContext(@ctx).thenReturn("foo")
 
       context "when satisfied", ->
         When -> @result = @spy.call(@ctx)
@@ -131,7 +132,7 @@
         Then -> @result == undefined
 
     describe "#mostRecentCallThat", ->
-      Given -> @spy = stealthy(jasmine.createSpy())
+      Given -> @spy = jasmine.createSpy()
       Given -> @spy("foo")
       Given -> @spy("bar")
       Given -> @spy("baz")
@@ -165,7 +166,7 @@
 
     describe "jasmine.argThat (jasmine.Matchers.ArgThat)", ->
       context "with when()", ->
-        Given -> @spy = stealthy(jasmine.createSpy())
+        Given -> @spy = jasmine.createSpy()
         Given -> @spy.when(jasmine.argThat (arg) -> arg > 5).thenReturn("YAY")
         Given -> @spy.when(jasmine.argThat (arg) -> arg < 3).thenReturn("BOO")
 
@@ -175,7 +176,7 @@
 
 
       context "with a spy arg, using toHaveBeenCalledWith", ->
-        Given -> @spy = stealthy(jasmine.createSpy())
+        Given -> @spy = jasmine.createSpy()
         When -> @spy(5)
         Then -> expect(@spy).toHaveBeenCalledWith(jasmine.argThat (arg) -> arg < 6)
         Then -> expect(@spy).not.toHaveBeenCalledWith(jasmine.argThat (arg) -> arg > 5)
@@ -187,14 +188,14 @@
 
     describe "jasmine.captor, #capture() & .value", ->
       Given -> @captor = jasmine.captor()
-      Given -> @spy = stealthy(jasmine.createSpy())
+      Given -> @spy = jasmine.createSpy()
       When -> @spy("foo!")
       Then -> expect(@spy).toHaveBeenCalledWith(@captor.capture())
       And -> @captor.value == "foo!"
 
       it "readme example", ->
         captor = jasmine.captor()
-        save = stealthy(jasmine.createSpy())
+        save = jasmine.createSpy()
 
         save({ name: "foo", phone: "123"});
 
@@ -231,7 +232,7 @@
         context "stubbing the model's method", ->
           Given -> @modelSpies = spyOnConstructor(root, "Model", "toJSON")
           Given -> @subject = new root.View()
-          Given -> @modelSpies.toJSON.andReturn("some json")
+          Given -> @modelSpies.toJSON.and.return("some json")
           When -> @result = @subject.serialize()
           Then -> expect(@result).toEqual
             model: "some json"

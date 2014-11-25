@@ -38,27 +38,6 @@
     unfakes.push ->
       owner[thingToFake] = originalThing
 
-  #stub nomenclature
-
-  root.stubFor = root.spyOn
-  jasmine.createStub = jasmine.createSpy
-  jasmine.createStubObj = (baseName, stubbings) ->
-    if stubbings.constructor is Array
-      jasmine.createSpyObj baseName, stubbings
-    else
-      obj = {}
-      for name of stubbings
-        stubbing = stubbings[name]
-        obj[name] = jasmine.createSpy(baseName + "." + name)
-        if _(stubbing).isFunction()
-          obj[name].andCallFake stubbing
-        else
-          obj[name].andReturn stubbing
-      obj
-
-
-
-
   whatToDoWhenTheSpyGetsCalled = (spy) ->
     matchesStub = (stubbing,args,context) ->
       switch stubbing.type
@@ -79,26 +58,74 @@
         i++
       priorPlan.apply(spy, arguments)
 
-  root.stealthy = (spy) ->
-    spy.whenContext = (context) ->
+
+  addStealthyToPrototype = () ->
+
+    jasmine.Spy::whenContext = (context) ->
+      spy = this
       spy._stealth_stubbings ||= []
       whatToDoWhenTheSpyGetsCalled(spy)
       stubChainer(spy, "context", context)
 
-    spy.when = ->
+    jasmine.Spy::when = ->
+      spy = this
       ifThis = jasmine.util.argsToArray(arguments)
       spy._stealth_stubbings ||= []
       whatToDoWhenTheSpyGetsCalled(spy)
       stubChainer(spy, "args", ifThis)
 
+    jasmine.Spy::mostRecentCallThat = (callThat, context) ->
+      i = @calls.length - 1
+      while i >= 0
+        return @calls[i] if callThat.call(context or this, @calls[i]) is true
+        i--
+    return
+
+  whatToDoWhenTheSpyGetsCalledInstance = (spy) ->
+    matchesStub = (stubbing, args, context) ->
+      switch stubbing.type
+        when "args" then jasmine.matchersUtil.equals(stubbing.ifThis, jasmine.util.argsToArray(args))
+        when "context" then jasmine.matchersUtil.equals(stubbing.ifThis, context)
+
+    priorPlan = spy.and;
+
+    spy.andCallFake ->
+      i = 0
+      while i < spy._stealth_stubbings.length
+        stubbing = spy._stealth_stubbings[i]
+        if matchesStub(stubbing,arguments,this)
+          if stubbing.satisfaction == "callFake"
+            return stubbing.thenThat(arguments...)
+          else
+            return stubbing.thenThat
+        i++
+      priorPlan.apply(spy, arguments)
+
+  stealthy = (spy) ->
+    spy.whenContext = (context) ->
+      spy._stealth_stubbings ||= []
+      whatToDoWhenTheSpyGetsCalledInstance(spy)
+      stubChainer(spy, "context", context)
+
+    spy.when = () ->
+      ifThis = jasmine.util.argsToArray(arguments)
+      spy._stealth_stubbings ||= []
+      whatToDoWhenTheSpyGetsCalledInstance(spy)
+      stubChainer(spy, "args", ifThis)
+
     spy.mostRecentCallThat = (callThat, context) ->
       i = @calls.length - 1
-
       while i >= 0
-        return @calls[i]  if callThat.call(context or this, @calls[i]) is true
+        return @calls[i] if callThat.call(context or this, @calls[i]) is true
         i--
-
     spy
+
+  if jasmine.Spy
+    addStealthyToPrototype()
+  else
+    originalCreateSpy = jasmine.createSpy
+    jasmine.createSpy = () ->
+      stealthy(originalCreateSpy.apply(this, arguments))
 
   stubChainer = (spy, type, ifThis) ->
     addStubbing = (satisfaction) ->
@@ -109,6 +136,23 @@
     thenReturn: addStubbing("return")
     thenCallFake: addStubbing("callFake")
 
+  #stub nomenclature
+
+  root.stubFor = root.spyOn
+  jasmine.createStub = jasmine.createSpy
+  jasmine.createStubObj = (baseName, stubbings) ->
+    if stubbings.constructor is Array
+      jasmine.createSpyObj baseName, stubbings
+    else
+      obj = {}
+      for name of stubbings
+        stubbing = stubbings[name]
+        obj[name] = jasmine.createSpy(baseName + "." + name)
+        if _(stubbing).isFunction()
+          obj[name].andCallFake stubbing
+        else
+          obj[name].andReturn stubbing
+      obj
 
 
   ## Matchers
