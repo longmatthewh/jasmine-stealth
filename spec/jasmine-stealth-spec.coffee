@@ -12,12 +12,12 @@
       describe ".stubFor", ->
         context "existing method", ->
           Given -> root.lolol = -> "roflcopter"
-          When -> stubFor(root, "lolol").and.return("lol")
+          When -> stubFor(root, "lolol").andReturn("lol")
           Then -> root.lolol() == "lol"
 
         context "non-existing method", ->
           Given -> @obj = { woot: null }
-          When -> spyOn(@obj, "woot").and.return("troll")
+          When -> spyOn(@obj, "woot").andReturn("troll")
           Then -> @obj.woot() == "troll"
 
     describe "#when", ->
@@ -81,8 +81,8 @@
           When -> @spy("panda", "baby")
           Then -> expect(@fake).toHaveBeenCalledWith("panda", "baby")
 
-      context "default and.return plus some conditional stubbing", ->
-        Given -> @spy.and.return "football"
+      context "default andReturn plus some conditional stubbing", ->
+        Given -> @spy.andReturn "football"
         Given -> @spy.when("bored").thenReturn "baseball"
 
         describe "it doesn't appear to invoke the spy", ->
@@ -232,7 +232,7 @@
         context "stubbing the model's method", ->
           Given -> @modelSpies = spyOnConstructor(root, "Model", "toJSON")
           Given -> @subject = new root.View()
-          Given -> @modelSpies.toJSON.and.return("some json")
+          Given -> @modelSpies.toJSON.andReturn("some json")
           When -> @result = @subject.serialize()
           Then -> expect(@result).toEqual
             model: "some json"
