@@ -60,7 +60,6 @@
 
 
   addStealthyToPrototype = () ->
-
     jasmine.Spy::whenContext = (context) ->
       spy = this
       spy._stealth_stubbings ||= []
@@ -87,19 +86,20 @@
         when "args" then jasmine.matchersUtil.equals(stubbing.ifThis, jasmine.util.argsToArray(args))
         when "context" then jasmine.matchersUtil.equals(stubbing.ifThis, context)
 
-    priorPlan = spy.and;
-
-    spy.andCallFake ->
+    priorPlan = spy.and.exec();
+    spy.and.callFake ->
       i = 0
       while i < spy._stealth_stubbings.length
         stubbing = spy._stealth_stubbings[i]
+
         if matchesStub(stubbing,arguments,this)
+
           if stubbing.satisfaction == "callFake"
             return stubbing.thenThat(arguments...)
           else
             return stubbing.thenThat
         i++
-      priorPlan.apply(spy, arguments)
+      priorPlan
 
   stealthy = (spy) ->
     spy.whenContext = (context) ->
@@ -120,6 +120,7 @@
         i--
     spy
 
+
   if jasmine.Spy
     addStealthyToPrototype()
   else
@@ -133,7 +134,7 @@
         spy._stealth_stubbings.unshift({type, ifThis, satisfaction, thenThat})
         spy
 
-    thenReturn: addStubbing("return")
+    thenReturn: addStubbing("returnValue")
     thenCallFake: addStubbing("callFake")
 
   #stub nomenclature
@@ -149,37 +150,38 @@
         stubbing = stubbings[name]
         obj[name] = jasmine.createSpy(baseName + "." + name)
         if _(stubbing).isFunction()
-          obj[name].andCallFake stubbing
+          obj[name].and.callFake stubbing
         else
-          obj[name].andReturn stubbing
+          obj[name].and.returnValue stubbing
       obj
+
 
 
   ## Matchers
 
-  class jasmine.Matchers.ArgThat extends jasmine.Matchers.Any
-    constructor: (matcher) ->
-      @matcher = matcher
-
-    jasmineMatches: (actual) ->
-      @matcher(actual)
-
-  jasmine.Matchers.ArgThat::matches = jasmine.Matchers.ArgThat::jasmineMatches #backwards compatibility for jasmine 1.1
-  jasmine.argThat = (expected) -> new jasmine.Matchers.ArgThat(expected)
-
-  class jasmine.Matchers.Capture extends jasmine.Matchers.Any
-    constructor: (captor) ->
-      @captor = captor
-
-    jasmineMatches: (actual) ->
-      @captor.value = actual
-      true
-
-  jasmine.Matchers.Capture::matches = jasmine.Matchers.Capture::jasmineMatches #backwards compatibility for jasmine 1.1
-
-  class Captor
-    capture: ->
-      new jasmine.Matchers.Capture(@)
-
-  jasmine.captor = () -> new Captor()
+#  class jasmine.Matchers.ArgThat extends jasmine.Matchers.Any
+#    constructor: (matcher) ->
+#      @matcher = matcher
+#
+#    jasmineMatches: (actual) ->
+#      @matcher(actual)
+#
+#  jasmine.Matchers.ArgThat::matches = jasmine.Matchers.ArgThat::jasmineMatches #backwards compatibility for jasmine 1.1
+#  jasmine.argThat = (expected) -> new jasmine.Matchers.ArgThat(expected)
+#
+#  class jasmine.Matchers.Capture extends jasmine.Matchers.Any
+#    constructor: (captor) ->
+#      @captor = captor
+#
+#    jasmineMatches: (actual) ->
+#      @captor.value = actual
+#      true
+#
+#  jasmine.Matchers.Capture::matches = jasmine.Matchers.Capture::jasmineMatches #backwards compatibility for jasmine 1.1
+#
+#  class Captor
+#    capture: ->
+#      new jasmine.Matchers.Capture(@)
+#
+#  jasmine.captor = () -> new Captor()
 )()

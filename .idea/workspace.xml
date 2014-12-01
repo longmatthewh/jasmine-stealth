@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42d967b5-ccf7-4620-8a77-986b736e3f84" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/helpers/jasmine-only.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/jasmine-stealth-spec.coffee" afterPath="$PROJECT_DIR$/spec/jasmine-stealth-spec.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/jasmine-stealth.coffee" afterPath="$PROJECT_DIR$/app/js/jasmine-stealth.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="jasmine-stealth.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,25 +28,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="jasmine-only.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spec/helpers/jasmine-only.js">
+      <file leaf-file-name="jasmine-stealth.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/jasmine-stealth.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1635">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-9.807693" vertical-offset="1200" max-vertical-offset="2895">
+              <caret line="97" column="50" selection-start-line="97" selection-start-column="50" selection-end-line="97" selection-end-column="50" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jasmine-given.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spec/helpers/jasmine-given.js">
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/generated/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-41.53846" vertical-offset="0" max-vertical-offset="5775">
-              <caret line="72" column="21" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="21" />
+            <state vertical-scroll-proportion="-21.423077" vertical-offset="2683" max-vertical-offset="3450">
+              <caret line="216" column="7" selection-start-line="216" selection-start-column="7" selection-end-line="216" selection-end-column="7" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <marker date="1417399597000" expanded="true" signature="4174:4399" placeholder="{...}" />
+                <marker date="1417399597000" expanded="true" signature="4775:4822" placeholder="{...}" />
+                <marker date="1417399597000" expanded="true" signature="4828:4876" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -52,28 +55,8 @@
       <file leaf-file-name="spec.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generated/js/spec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6060" max-vertical-offset="15345">
-              <caret line="426" column="14" selection-start-line="426" selection-start-column="14" selection-end-line="426" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="spec.coffee.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/generated/js/spec.coffee.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6030" max-vertical-offset="8010">
-              <caret line="243" column="44" selection-start-line="243" selection-start-column="44" selection-end-line="243" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="spec.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/spec.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="225">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state vertical-scroll-proportion="-8.653846" vertical-offset="8520" max-vertical-offset="13605">
+              <caret line="583" column="0" selection-start-line="583" selection-start-column="0" selection-end-line="583" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -112,8 +95,8 @@
       <file leaf-file-name="application.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/application.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="915">
-              <caret line="50" column="29" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="915">
+              <caret line="0" column="20" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -122,9 +105,31 @@
       <file leaf-file-name="jasmine-stealth-spec.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spec/jasmine-stealth-spec.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33216783" vertical-offset="20" max-vertical-offset="3675">
-              <caret line="14" column="50" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.7083333" vertical-offset="1375" max-vertical-offset="3720">
+              <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="helper.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spec/helpers/helper.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="135">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jasmine-given.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spec/helpers/jasmine-given.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.5" vertical-offset="2985" max-vertical-offset="5775">
+              <caret line="212" column="14" selection-start-line="212" selection-start-column="6" selection-end-line="212" selection-end-column="14" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -144,12 +149,12 @@
       <list>
         <option value="$PROJECT_DIR$/generated/js/spec.coffee.js" />
         <option value="$PROJECT_DIR$/spec-node/package.json" />
-        <option value="$PROJECT_DIR$/generated/js/spec.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/generated/js/app.coffee.js" />
-        <option value="$PROJECT_DIR$/app/js/jasmine-stealth.coffee" />
         <option value="$PROJECT_DIR$/config/spec.json" />
+        <option value="$PROJECT_DIR$/app/js/jasmine-stealth.coffee" />
+        <option value="$PROJECT_DIR$/generated/js/spec.js" />
         <option value="$PROJECT_DIR$/spec/jasmine-stealth-spec.coffee" />
       </list>
     </option>
@@ -640,31 +645,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/jasmine-stealth.coffee">
+    <entry file="file://$PROJECT_DIR$/generated/js/spec.coffee.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-72.69231" vertical-offset="0" max-vertical-offset="2865">
-          <caret line="126" column="29" selection-start-line="126" selection-start-column="29" selection-end-line="126" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="6030" max-vertical-offset="8010">
+          <caret line="243" column="44" selection-start-line="243" selection-start-column="44" selection-end-line="243" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/helpers/jasmine-only.js">
+    <entry file="file://$PROJECT_DIR$/config/spec.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1635">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/helpers/jasmine-given.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-41.53846" vertical-offset="0" max-vertical-offset="5775">
-          <caret line="72" column="21" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="21" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="225">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -692,42 +685,64 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/spec/helpers/jasmine-given.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5" vertical-offset="2985" max-vertical-offset="5775">
+          <caret line="212" column="14" selection-start-line="212" selection-start-column="6" selection-end-line="212" selection-end-column="14" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/helpers/helper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="626">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config/application.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="915">
-          <caret line="50" column="29" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="915">
+          <caret line="0" column="20" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/spec.json">
+    <entry file="file://$PROJECT_DIR$/generated/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="225">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="-21.423077" vertical-offset="2683" max-vertical-offset="3450">
+          <caret line="216" column="7" selection-start-line="216" selection-start-column="7" selection-end-line="216" selection-end-column="7" />
+          <folding>
+            <marker date="1417399597000" expanded="true" signature="4174:4399" placeholder="{...}" />
+            <marker date="1417399597000" expanded="true" signature="4775:4822" placeholder="{...}" />
+            <marker date="1417399597000" expanded="true" signature="4828:4876" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generated/js/spec.coffee.js">
+    <entry file="file://$PROJECT_DIR$/app/js/jasmine-stealth.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6030" max-vertical-offset="8010">
-          <caret line="243" column="44" selection-start-line="243" selection-start-column="44" selection-end-line="243" selection-end-column="44" />
+        <state vertical-scroll-proportion="-9.807693" vertical-offset="1200" max-vertical-offset="2895">
+          <caret line="97" column="50" selection-start-line="97" selection-start-column="50" selection-end-line="97" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/generated/js/spec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6060" max-vertical-offset="15345">
-          <caret line="426" column="14" selection-start-line="426" selection-start-column="14" selection-end-line="426" selection-end-column="14" />
+        <state vertical-scroll-proportion="-8.653846" vertical-offset="8520" max-vertical-offset="13605">
+          <caret line="583" column="0" selection-start-line="583" selection-start-column="0" selection-end-line="583" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/jasmine-stealth-spec.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33216783" vertical-offset="20" max-vertical-offset="3675">
-          <caret line="14" column="50" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.7083333" vertical-offset="1375" max-vertical-offset="3720">
+          <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
           <folding />
         </state>
       </provider>
